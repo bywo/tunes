@@ -1,0 +1,11 @@
+<h4>Dis be da player</h4>
+{{#if player.isPaused}}
+<button {{action 'play'}}>Play</button>
+{{else}}
+<button {{action 'pause'}}>Pause</button>
+{{/if}}
+{{currentSound.soundType}} - {{currentSound.identifier}}
+
+{{player.position}}
+
+<div id="youtube-player"></div>

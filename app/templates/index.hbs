@@ -1,0 +1,7 @@
+<ul>
+{{#each sound in this}}
+  <li>
+    {{sound.soundType}} - {{sound.identifier}} <button {{action 'loadSound' sound}}>Load</button>
+  </li>
+{{/each}}
+</ul>

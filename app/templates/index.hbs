@@ -1,7 +1,8 @@
+{{#link-to 'songs.new'}}Add Song{{/link-to}}
 <ul>
-{{#each sound in this}}
+{{#each song in this}}
   <li>
-    {{sound.soundType}} - {{sound.identifier}} <button {{action 'loadSound' sound}}>Load</button>
+    <button {{action 'play' song}}>Play</button> {{song.title}} - {{song.artist}}
   </li>
 {{/each}}
 </ul>

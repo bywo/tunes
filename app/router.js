@@ -6,9 +6,9 @@ Router.map(function() {
   this.route('component-test');
   this.route('helper-test');
   this.route('about');
-  // this.resource('posts', function() {
-  //   this.route('new');
-  // });
+  this.resource('songs', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

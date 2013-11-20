@@ -1,35 +1,42 @@
 import players from 'appkit/api-player';
 
 var PlayerController = Ember.Controller.extend({
-  currentSoundId: null,
+  currentSong: null,
 
-  currentSound: function() {
-    var currentSoundId = this.get('currentSoundId');
-    if (currentSoundId) {
+  updateCurrentSound: function() {
+    var currentSong = this.get('currentSong');
+    if (currentSong) {
       var store = this.get('store');
-      return store.find('sound', currentSoundId);
+      var ctrl = this;
+      return store.findAll('sound').then(function(sounds) {
+        ctrl.set('currentSound', sounds.find(function(sound) {
+          return sound.get('song') === currentSong;
+        }));
+      });
+    } else {
+      this.unset('currentSound');
     }
-  }.property('currentSoundId'),
+  }.observes('currentSong'),
 
   setupPlayer: function() {
     var player = this.get('player');
     if (player) {
       player.destroy();
     }
-    this.get('currentSound').then(_.bind(function(currentSound) {
-      var soundType = currentSound.get('soundType');
-      if (soundType === 'youtube') {
-        var player = players.YoutubePlayer.create({
-          currentSound: currentSound
-        });
-        this.set('player', player);
-      } else if (soundType == 'soundcloud') {
-        var player = players.SoundcloudPlayer.create({
-          currentSound: currentSound
-        });
-        this.set('player', player);
-      }
-    }, this));
+
+    var currentSound = this.get('currentSound');
+    var soundType = currentSound.get('soundType');
+    if (soundType === 'youtube') {
+      player = players.YoutubePlayer.create({
+        currentSound: currentSound
+      });
+      this.set('player', player);
+    } else if (soundType == 'soundcloud') {
+      player = players.SoundcloudPlayer.create({
+        currentSound: currentSound
+      });
+      this.set('player', player);
+    }
   }.observes('currentSound'),
 
   actions: {

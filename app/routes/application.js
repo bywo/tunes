@@ -9,8 +9,10 @@ var ApplicationRoute = Ember.Route.extend({
   },
 
   actions: {
-    loadSound: function(sound) {
-      this.controllerFor('player').set('currentSoundId', sound.id);
+    play: function(song) {
+      var player = this.controllerFor('player');
+      player.set('currentSong', song);
+      // play
     }
   }
 });

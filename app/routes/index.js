@@ -1,6 +1,6 @@
 var IndexRoute = Ember.Route.extend({
   model: function() {
-    return this.get('store').findAll('sound');
+    return this.get('store').findAll('song');
   },
   // renderTemplate: function() {
   //   this.render();

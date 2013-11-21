@@ -51,5 +51,7 @@
     "loom": "~2.0.0"
   },
   "dependencies": {
+    "bower": "~1.2.7",
+    "grunt": "~0.4.1",
   }
 }

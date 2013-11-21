@@ -4,7 +4,8 @@ cp -r node_modules webapp
 cd webapp
 bower install
 
-if [[ $RAILS_ENV == "production" ]]; then
+if [[ $BUILD_ENV == "production" ]]; then
+    echo "---------> building assets"
     grunt dist
-    cp dist/assets/* ../public/assets
+    cp -r dist/assets ../public
 fi

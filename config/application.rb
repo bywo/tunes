@@ -24,5 +24,7 @@ module Tunes
     config.generators do |g|
       g.assets false
     end
+
+    config.assets.enabled = false
   end
 end

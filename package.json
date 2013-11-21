@@ -11,7 +11,7 @@
     "start": "grunt server",
     "build": "grunt build:debug",
     "test": "grunt test:ci",
-    "postinstall": "bower install"
+    "postinstall": "bower install; cd webapp; grunt dist"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,6 @@
   "devDependencies": {
     "express": "~3.4.2",
     "lockfile": "~>0.3.0",
-    "grunt-cli": "~0.1.9",
     "load-grunt-config": "~0.5.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-copy": "~0.4.1",
@@ -50,6 +49,7 @@
   },
   "dependencies": {
     "bower": "~1.2.7",
+    "grunt-cli": "~0.1.9",
     "grunt": "~0.4.1"
   }
 }

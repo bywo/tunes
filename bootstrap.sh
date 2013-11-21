@@ -17,3 +17,11 @@ bower install
 
 # we need this for foreman to run correctly
 sudo apt-get install -y rubygems1.9.1
+
+# setup Rails and gem dependencies
+cd /vagrant
+bundle install
+
+# setup db
+rake db:create
+rake db:migrate

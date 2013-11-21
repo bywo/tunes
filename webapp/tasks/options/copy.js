@@ -41,7 +41,7 @@ module.exports = {
       dest: 'tmp/result/'
     }, {
       src: ['vendor/**/*.js', 'vendor/**/*.css'],
-      dest: 'tmp/result/'
+      dest: 'tmp/result/assets/'
     }
     ]
   },

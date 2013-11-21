@@ -1,11 +1,25 @@
 Tunes::Application.routes.draw do
-  root 'welcome#index'
-  get '*path' => 'welcome#index'
+  if Rails.env.production?
+    root 'webapp#index'
+  else
+    root 'webapp#index-dev'
+  end
+
+  namespace :api do
+    resources :songs
+  end
+
+  # if Rails.env.production?
+  #   get '*path' => 'webapp#index'
+  # else
+  #   get '*path' => 'webapp#index-dev'
+  # end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'webapp#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

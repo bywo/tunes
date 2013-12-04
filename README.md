@@ -15,6 +15,12 @@ tunes
   * `cd /vagrant/webapp; grunt server` - Express server for static assets and file watcher to recompile JS/CSS
 1. In browser: `http://0.0.0.0:8000`
 
+## DB Stuff
+
+1. Download posgres.app (maintained by heroku)
+2. run 'rake db:setup'
+3. run 'rake db:migrate'
+
 ## App Organization
 
 The application is composed of two separate parts, the API backend (Rails) and the HTML5 client (Ember served by Express). The client shouldn't assume anything about the backend except what's defined by the API. The Rails app code sits in the root of the repository. The frontend client code sits in `/webapp`. One weirdness is that `package.json`, which only applies to `/webapp`, sits in the root. This is because the Heroku buildpack for Node only searches in the root for `package.json`.

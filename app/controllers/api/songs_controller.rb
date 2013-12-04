@@ -10,7 +10,7 @@ class Api::SongsController < ApplicationController
   end
 
   def create
-    respond_with Song.create(post_params)
+    respond_with(:api, Song.create(post_params))
   end
 
   def update

@@ -48,4 +48,4 @@ gem 'unicorn'
 gem 'rails_12factor', group: :production
 ruby "2.0.0"
 
-gem 'active_model_serializers'
+gem 'ember-rails'

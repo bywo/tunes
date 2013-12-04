@@ -1,2 +1,4 @@
-var FixtureAdapter = DS.FixtureAdapter.extend();
-export default FixtureAdapter;
+var RESTAdapter = DS.RESTAdapter.extend({
+  namespace: 'api'
+});
+export default RESTAdapter;

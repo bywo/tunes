@@ -1,4 +1,10 @@
 var ApplicationRoute = Ember.Route.extend({
+  activate: function() {
+    this.keysLoading = $.getJSON('/api/keys').then(_.bind(function(keys) {
+      this.keys = keys;
+    }, this));
+  },
+
   renderTemplate: function() {
     this.render();
     this.render('player', {

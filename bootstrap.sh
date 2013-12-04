@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# useful tools
+sudo apt-get tmux
+
 # get node
 sudo apt-get update
 sudo apt-get install -y python-software-properties python g++ make
@@ -11,9 +14,8 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 # setup frontend build tools
 sudo npm install -g grunt-cli bower
-cd /vagrant/webapp
+cd /vagrant
 npm install
-bower install
 
 # we need this for foreman to run correctly
 sudo apt-get install -y rubygems1.9.1

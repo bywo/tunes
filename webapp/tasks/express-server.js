@@ -3,7 +3,8 @@ module.exports = function(grunt) {
       lockFile = require('lockfile'),
       Helpers = require('./helpers'),
       fs = require('fs'),
-      path = require('path');
+      path = require('path'),
+      httpProxy = require('http-proxy');
 
   /**
   Task for serving the static files.
@@ -19,6 +20,16 @@ module.exports = function(grunt) {
 
     if (target === 'debug') {
       // For `expressServer:debug`
+
+      // proxy to rails for api
+      var proxy = httpProxy.createServer(function(req, res, proxy) {
+        req.url = req.originalUrl;
+        proxy.proxyRequest(req, res, {
+          host: 'localhost',
+          port: 3000
+        });
+      });
+      app.use('/api', proxy);
 
       // Add livereload middlware after lock middleware if enabled
       if (Helpers.isPackageAvailable("connect-livereload")) {

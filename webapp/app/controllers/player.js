@@ -6,13 +6,7 @@ var PlayerController = Ember.Controller.extend({
   updateCurrentSound: function() {
     var currentSong = this.get('currentSong');
     if (currentSong) {
-      var store = this.get('store');
-      var ctrl = this;
-      return store.findAll('sound').then(function(sounds) {
-        ctrl.set('currentSound', sounds.find(function(sound) {
-          return sound.get('song') === currentSong;
-        }));
-      });
+      this.set('currentSound', currentSong.get('sounds').content[0]);
     } else {
       this.unset('currentSound');
     }

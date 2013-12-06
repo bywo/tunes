@@ -5,7 +5,10 @@
 <button {{action 'pause'}}>Pause</button>
 {{/if}}
 {{currentSong.title}} - {{currentSong.artist}}<br>
-{{currentSound.soundType}} - {{currentSound.identifier}}
+{{#each sound in currentSong.sounds}}
+{{sound.soundType}} - {{sound.location}}
+{{/each}}
+{{currentSound.soundType}} - {{currentSound.location}}
 
 {{player.position}}
 

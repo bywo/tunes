@@ -4,9 +4,8 @@ Tunes::Application.routes.draw do
   end
 
   namespace :api do
-    resources :songs, :shallow => true do
-      resources :sounds
-    end
+    resources :songs
+    resources :sounds
 
     resources :keys
   end

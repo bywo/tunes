@@ -22,7 +22,7 @@ var SoundcloudPlayer = Ember.Object.extend({
     this.ending = this._ending.promise;
 
     initSoundcloud();
-    var player = SC.stream(this.get('currentSound').get('identifier'), _.bind(function(player) {
+    var player = SC.stream(this.get('currentSound').get('location'), _.bind(function(player) {
       this.set('player', player);
       player.load({
         whileplaying: _.bind(this._whilePlaying, this),
@@ -101,7 +101,7 @@ var YoutubePlayer = Ember.Object.extend({
     var player = new YT.Player('youtube-player', {
       height: '100',
       width: '100',
-      videoId: this.get('currentSound').get('identifier'),
+      videoId: this.get('currentSound').get('location'),
       playerVars: ytPlayerVars,
       events: {
         onReady: _.bind(this._onPlayerReady, this),

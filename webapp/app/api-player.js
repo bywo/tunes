@@ -1,11 +1,9 @@
-// import keys from 'appkit/keys';
-
 var hasScInited = false;
-function initSoundcloud() {
+function initSoundcloud(key) {
   if (!hasScInited) {
     hasScInited = true;
     SC.initialize({
-      client_id: keys.soundcloud
+      client_id: key
     });
   }
 }
@@ -21,7 +19,7 @@ var SoundcloudPlayer = Ember.Object.extend({
     this._ending = Ember.RSVP.defer();
     this.ending = this._ending.promise;
 
-    initSoundcloud();
+    initSoundcloud(this.get('key'));
     var player = SC.stream(this.get('currentSound').get('location'), _.bind(function(player) {
       this.set('player', player);
       player.load({

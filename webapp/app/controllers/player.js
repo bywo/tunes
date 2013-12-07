@@ -27,7 +27,8 @@ var PlayerController = Ember.Controller.extend({
       this.set('player', player);
     } else if (soundType == 'soundcloud') {
       player = players.SoundcloudPlayer.create({
-        currentSound: currentSound
+        currentSound: currentSound,
+        key: this.get('keys').soundcloud
       });
       this.set('player', player);
     }

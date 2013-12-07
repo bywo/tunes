@@ -17,3 +17,7 @@ Sound.where(:song => s, :sound_type => 'soundcloud', :location => '121239554').f
 
 s = Song.where(:title => "Simple Things (Original Mix)", :artist => "Foyle & Zo").first_or_create
 Sound.where(:song => s, :sound_type => 'youtube', :location => 'DT5sF1kBDGE').first_or_create
+
+
+s = Song.where(:title => "Pillz", :artist => "Flosstradamus").first_or_create
+Sound.where(:song => s, :sound_type => 'soundcloud', :location => '111133727').first_or_create

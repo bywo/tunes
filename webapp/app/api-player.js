@@ -1,4 +1,4 @@
-import keys from 'appkit/keys';
+// import keys from 'appkit/keys';
 
 var hasScInited = false;
 function initSoundcloud() {

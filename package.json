@@ -27,7 +27,6 @@
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-jshint": "~0.6.2",
-    "grunt-contrib-less": "~0.8.2",
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-cssmin": "~0.6.1",
     "grunt-preprocess": "~3.0.1",
@@ -49,7 +48,8 @@
     "karma-phantomjs-launcher": "~0.0.2",
     "loom-generators-ember": "0.0.3",
     "loom": "~2.0.0",
-    "http-proxy": "~0.10.3"
+    "http-proxy": "~0.10.3",
+    "grunt-sass": "~0.9.0"
   },
   "dependencies": {
     "express": "~3.4.2",
@@ -59,7 +59,6 @@
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-jshint": "~0.6.2",
-    "grunt-contrib-less": "~0.8.2",
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-cssmin": "~0.6.1",
     "grunt-preprocess": "~3.0.1",
@@ -74,6 +73,7 @@
     "load-grunt-config": "~0.5.0",
     "grunt-cli": "~0.1.9",
     "grunt": "~0.4.1",
-    "time-grunt": "~0.2.1"
+    "time-grunt": "~0.2.1",
+    "grunt-sass": "~0.9.0"
   }
 }

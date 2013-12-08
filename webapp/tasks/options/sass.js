@@ -1,5 +1,8 @@
 module.exports = {
   compile: {
+    options: {
+      includePaths: ['vendor/foundation/scss'],
+    },
     files: [{
       expand: true,
       cwd: 'app/styles',

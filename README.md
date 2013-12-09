@@ -40,3 +40,19 @@ create an alias. Ember Generator commands are
 generate model user name:string age:number
 generate route about
 ```
+Rails uses Single Table Inheritence for extending an ActiveRecord base model.
+
+Class Song < ActiveRecord:Base
+  ...
+
+Class Remix < Song
+  ...
+
+Song and Remix will both refer to the same table.
+
+
+# Soundcloud
+## 404 issue
+Seems to be related to user authentication and private sets.
+
+[ref]http://stackoverflow.com/questions/18753879/soundcloud-api-resolve-method-404-error

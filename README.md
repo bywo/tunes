@@ -1,6 +1,15 @@
 tunes
 =====
 
+## Testing
+
+Rspec, Guard and Spork are used for TDD on the Ruby app. This combination will start a local server and run specs when files changes are detected. Most of the configuration can be found in the `Guardfile` and  `spec_helper.rb`. Integration with terminal notifications via the `terminal-notifier-guard` gem.
+
+To start test server: `$ bundle exec guard`
+
+* may need to run `rake test:prepare` to init testing db
+
+
 ## Getting Started
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
@@ -20,6 +29,7 @@ tunes
 1. Download posgres.app (maintained by heroku)
 2. run 'rake db:setup'
 3. run 'rake db:migrate'
+4. run 'rake test:prepare'
 
 ## App Organization
 

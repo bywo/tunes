@@ -1,0 +1,30 @@
+%div
+  %b Id
+  %span
+    = song.id
+%div
+  %b Title
+  %span
+    = song.title
+%div
+  %b Artist
+  %span
+    = song.artist
+%ul
+  - song.sounds.each do |sound|
+    %li
+      %div
+        %b
+          id
+        %span
+          = sound.id
+      %div
+        %b 
+          type
+        %span
+          = sound.sound_type
+      %div
+        %b 
+          location
+        %span
+          = sound.location

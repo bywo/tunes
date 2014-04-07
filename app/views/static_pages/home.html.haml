@@ -1,0 +1,9 @@
+%h1 Home!
+
+%section.add-song
+  = render 'songs/song_form'
+
+%section.songs
+  %h2 Songs
+  %ul
+    = render @songs

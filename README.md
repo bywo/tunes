@@ -13,7 +13,7 @@ To start test server: `$ bundle exec guard`
 ## Getting Started
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-1. Install [Vagrant](http://downloads.vagrantup.com/)
+1. Install [Vagrant](http://www.vagrantup.com/downloads.html)
 1. Clone the project
 1. Make your dev VM: `vagrant up`
 1. SSH into VM and bootstrap it

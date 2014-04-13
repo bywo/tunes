@@ -12,8 +12,9 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'pg', '0.15.1'
 gem 'haml'
+gem 'devise'
 
-group :development, :test do 
+group :development, :test do
   # gem 'sqlite3', '1.3.7'
   gem 'rspec-rails', '2.13.1'
   # The following optional lines are part of the advanced setup.
@@ -25,7 +26,7 @@ group :development, :test do
   gem 'terminal-notifier-guard'
 end
 
-group :test do 
+group :test do
   gem 'selenium-webdriver', '~>2.35.1'
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails', '4.2.0'
@@ -50,11 +51,11 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 
 
-group :doc do 
+group :doc do
   gem 'sdoc', '0.3.20', require: false
 end
 
-group :production do 
+group :production do
   gem 'pg', '0.15.1'
 end
 
@@ -112,7 +113,7 @@ end
 #   gem 'sdoc', require: false
 # end
 
-# group :development, :test do 
+# group :development, :test do
 #   # gem 'sqlite3', '1.3.7'
 #   gem 'rspec-rails', '2.13.1'
 #   # The following optional lines are part of the advanced setup.
@@ -124,7 +125,7 @@ end
 #   gem 'terminal-notifier-guard'
 # end
 
-# group :test do 
+# group :test do
 #   gem 'selenium-webdriver', '2.0.0'
 #   gem 'capybara', '2.1.0'
 #   gem 'factory_girl_rails', '4.2.0'

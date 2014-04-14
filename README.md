@@ -13,16 +13,16 @@ To start test server: `$ bundle exec guard`
 ## Getting Started
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-1. Install [Vagrant](http://www.vagrantup.com/downloads.html)
-1. Clone the project
-1. Make your dev VM: `vagrant up`
-1. SSH into VM and bootstrap it
+2. Install [Vagrant](http://www.vagrantup.com/downloads.html)
+3. Clone the project
+4. Make your dev VM: `vagrant up`
+5. SSH into VM and bootstrap it
   * `vagrant ssh`
   * `/vagrant/bootstrap.sh`
   * `export SOUNDCLOUD_KEY=[soundcloud key]` (should probably put it in .bash_profile)
   * `cd /vagrant; foreman start` - Rails server for API
   * `cd /vagrant/webapp; grunt server` - Express server for static assets and file watcher to recompile JS/CSS
-1. In browser: `http://0.0.0.0:8000`
+6. In browser: `http://0.0.0.0:8000`
 
 ## DB Stuff
 
@@ -31,20 +31,27 @@ To start test server: `$ bundle exec guard`
 3. run 'rake db:migrate'
 4. run 'rake test:prepare'
 
-## App Organization
+If you you have an exsiting db:
+
+1. `$ rake db:reset`
+2. `$ rake db:seed`
+3. `$ rake test:prepare`
+
+## Users
+
+- using the devise gem for user auth
+- db seed depends on a 'secret' config file
+  - Nothing in the '/secret' directory should be checked into version control
+  - the credentials in this file should only be used to generate a test about
+- see the seed file for example
+
+
+## App Organization (TODO update)
 
 The application is composed of two separate parts, the API backend (Rails) and the HTML5 client (Ember served by Express). The client shouldn't assume anything about the backend except what's defined by the API. The Rails app code sits in the root of the repository. The frontend client code sits in `/webapp`. One weirdness is that `package.json`, which only applies to `/webapp`, sits in the root. This is because the Heroku buildpack for Node only searches in the root for `package.json`.
 
 All API calls are in `/api`; any other URL paths are handled by the frontend client. In dev environments, the Express server (`/webapp/tasks/express-server.js`) handles all traffic and proxies `/api` traffic to the Rails server, which is why both `grunt server` and `foreman start` must be run. In prod environments, Rails handles all traffic serves both the API and the compiled version of the webapp client.
 
-## New file boilerplate
-
-[Loom](https://npmjs.org/package/loom) is a command-line tool that spits out
-boilerplate for new files like routes, controllers, models, etc. It's installed
-by npm into `/node_modules/loom`, and the `generate` binary is at
-`/node_modules/loom/bin/generate`. You might want to adjust your `$PATH` or
-create an alias. Ember Generator commands are
-[here](https://github.com/rpflorence/loom-generators-ember)
 
 ```
 generate model user name:string age:number
@@ -58,7 +65,7 @@ Class Song < ActiveRecord:Base
 Class Remix < Song
   ...
 
-Song and Remix will both refer to the same table.
+Song and Remix will both refer to the same table. Generally you wont need to think too much about this.
 
 
 # Soundcloud

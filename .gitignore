@@ -18,3 +18,6 @@
 .vagrant
 /node_modules
 .ruby-version
+
+# ignore secret files
+config/secret/*

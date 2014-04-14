@@ -1,8 +1,0 @@
-{{#link-to 'songs.new'}}Add Song{{/link-to}}
-<ul>
-{{#each song in this}}
-  <li>
-    <button {{action 'play' song}}>Play</button> {{song.title}} - {{song.artist}}
-  </li>
-{{/each}}
-</ul>

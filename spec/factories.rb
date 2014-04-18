@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :user do
-    # sequence(:name) { |n| "Person_#{n}" }
-    # sequence(:email) { |n| "person_#{n}@example.com" }
-    # password              "foobar"
-    # password_confirmation "foobar"
+    sequence(:username) { |n| "Person_#{n}" }
+    sequence(:email) { |n| "person_#{n}@example.com" }
+    password              "foobar123"
+    password_confirmation "foobar123"
 
     # factory :admin do
     #   admin true
@@ -25,10 +25,17 @@ FactoryGirl.define do
 
   end
 
+  # todo
+  # group with memebers
+  # group with songs
+  # group with feed
+
   factory :group do
-
-
+    sequence(:name) { |n| "Group_#{n}" }
+    description 'This is the description.'
   end
+
+
 
   factory :group_feed do
 

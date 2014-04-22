@@ -38,8 +38,23 @@ describe Group do
   end
 
 
-  describe 'playlist' do
+  describe 'managing posts' do
+    let(:user){ FactoryGirl.create(:user) }
+    let(:song){ FactoryGirl.create(:song) }
+    let(:text_post) { FactoryGirl.create(:text_post) }
+    let(:song_post) { FactoryGirl.create(:song_post) }
 
+    describe 'adding text post' do
+      before { group.add_text_post!(text_post) }
+      its(:text_posts) { should include(text_post) }
+      its(:posts) { should include(text_post) }
+    end
+
+    describe 'adding song post' do
+      before { group.add_song_post!(song_post) }
+      its(:song_posts) { should include(song_post) }
+      its(:posts) { should include(song_post) }
+    end
   end
 
 

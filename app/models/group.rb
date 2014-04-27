@@ -20,11 +20,15 @@ class Group < ActiveRecord::Base
     users
   end
 
-  def add_text_post!(text_post)
-    text_posts<<(text_post)
+  def add_text_post!(user, content)
+    text_posts.create!(user: user, content: content)
   end
 
-  def add_song_post!(song_post)
-    song_posts<<(song_post)
+  def add_song_post!(user, content, song)
+    song_posts.create!(user: user, content: content, song: song)
+  end
+
+  def remove_post!(post)
+    post.destroy
   end
 end

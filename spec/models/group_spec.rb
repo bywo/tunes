@@ -45,34 +45,47 @@ describe Group do
     let(:fake_song_post) { FactoryGirl.create(:song_post) }
 
     describe 'text posts' do
-      let(:text_post) { group.add_text_post!(user, fake_text_post.content) }
+      before { @text_post = group.add_text_post!(user, fake_text_post.content) }
+
+      describe 'new text post' do
+        subject { @text_post }
+        its(:user) { should == user }
+        its(:content) { should == fake_text_post.content }
+      end
 
       describe 'adding new text post' do
-        its(:text_posts) { should include(text_post) }
-        its(:posts) { should include(text_post) }
+        its(:text_posts) { should include(@text_post) }
+        its(:posts) { should include(@text_post) }
       end
 
       describe 'remove text post' do
-        before { group.remove_post!(text_post) }
+        before { group.remove_post!(@text_post) }
 
-        its(:text_posts) { should_not include(text_post) }
-        its(:posts) { should_not include(text_post) }
+        its(:text_posts) { should_not include(@text_post) }
+        its(:posts) { should_not include(@text_post) }
       end
     end
 
     describe 'song posts' do
-      let(:song_post) { group.add_song_post!(user, fake_song_post.content, fake_song_post.song) }
+      before { @song_post = group.add_song_post!(user, fake_song_post.content, fake_song_post.song) }
+
+      describe 'new song post' do
+        subject { @song_post }
+        its(:user) { should == user }
+        its(:content) { should == fake_song_post.content }
+        its(:song) { should == fake_song_post.song }
+      end
 
       describe 'adding new song post' do
-        its(:song_posts) { should include(song_post) }
-        its(:posts) { should include(song_post) }
+        its(:song_posts) { should include(@song_post) }
+        its(:posts) { should include(@song_post) }
       end
 
       describe 'remove song post' do
-        before { group.remove_post!(song_post) }
+        before { group.remove_post!(@song_post) }
 
-        its(:song_posts) { should_not include(song_post) }
-        its(:posts) { should_not include(song_post) }
+        its(:song_posts) { should_not include(@song_post) }
+        its(:posts) { should_not include(@song_post) }
       end
     end
   end

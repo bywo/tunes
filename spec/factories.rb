@@ -35,7 +35,18 @@ FactoryGirl.define do
     description 'This is the description.'
   end
 
+  factory :text_post do
+    content 'wutup homies'
+    user
+    group
+  end
 
+  factory :song_post do
+    content 'dis be a great song'
+    user
+    group
+    song
+  end
 
   factory :group_feed do
 

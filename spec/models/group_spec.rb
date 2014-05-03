@@ -21,7 +21,18 @@ describe Group do
     end
 
     describe "adds new memeber" do
-      its(:users) {should include(new_member_user)}
+      describe "first time member" do
+        its(:users) {should include(new_member_user)}
+        its(:users) { should have(1).items }
+      end
+
+      describe "redundant add" do
+        before do
+          group.add_member!(new_member_user)
+        end
+
+        its(:users) { should have(1).items }
+      end
     end
 
     describe "removing members" do

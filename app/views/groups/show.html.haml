@@ -1,0 +1,12 @@
+%h1
+  = "Group #{@group.id}"
+
+%div.membership-control
+
+%div
+  %b
+    members:
+  %ul
+  - @group.members.each do |member|
+    %li
+      = member.email

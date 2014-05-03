@@ -5,11 +5,16 @@ class Group < ActiveRecord::Base
   has_many :text_posts, inverse_of: :group
   has_many :song_posts, inverse_of: :group
 
+  validates_associated :memberships
+
   validates :name, presence: true
+
+  # TODO maybe index in db 
+  validates_uniqueness_of :name
 
 
   def add_member!(user)
-    memberships.create!(user_id: user.id)
+    memberships.find_or_create_by!(user_id: user.id)
   end
 
   def remove_member!(user)

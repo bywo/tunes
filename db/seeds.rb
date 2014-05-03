@@ -26,6 +26,8 @@ Sound.where(:song => s, :sound_type => 'soundcloud', :location => '100216961').f
 s = Song.where(:title => "Together", :artist => "Sam Smith x Nile Rodgers x Disclosure x Jimmy Napes").first_or_create
 Sound.where(:song => s, :sound_type => 'youtube', :location => 'DT5sF1kBDGE').first_or_create
 
+puts 'creating users ....'
+
 # you have to set this file up since its not checked in
 test_user = YAML.load_file('config/secret/test_user_cred.yml')['test_user']
 if User.find_by_email(test_user['email']).present?
@@ -37,3 +39,9 @@ else
                password_confirmation: test_user['password'])
 end
 
+
+
+puts 'creating groups .... '
+
+g = Group.where(name: 'FOUNDERS GROUP', description: 'this is the description').first_or_create
+g.add_member!(User.find_by_email(test_user['email']))

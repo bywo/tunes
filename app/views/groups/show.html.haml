@@ -1,7 +1,8 @@
 %h1
-  = "Group #{@group.id}"
+  = "Group #{@group.id}: #{@group.name}"
 
 %div.membership-control
+  = render "join_form"
 
 %div
   %b

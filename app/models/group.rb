@@ -6,11 +6,7 @@ class Group < ActiveRecord::Base
   has_many :song_posts, inverse_of: :group
 
   validates_associated :memberships
-
   validates :name, presence: true
-
-  # TODO maybe index in db 
-  validates_uniqueness_of :name
 
 
   def add_member!(user)

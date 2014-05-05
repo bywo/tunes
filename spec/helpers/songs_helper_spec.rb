@@ -7,13 +7,13 @@ describe SongsHelper do
   describe "song_from_soundcloud_url" do
     before do
       # stub out Soundcloud API requests
-      stub_request(:get, "http://api.soundcloud.com/resolve.json").
+      stub_request(:get, "http://api.soundcloud.com/resolve").
         with(query: hash_including({"url" => "https://soundcloud.com/saintpepsi/baby"})).
-        to_return(status: 200, body: BABY_JSON)
+        to_return(status: 200, body: BABY_JSON, headers: {"Content-Type" => "application/json; charset=utf-8"})
 
-      stub_request(:get, "http://api.soundcloud.com/users/31531137.json").
+      stub_request(:get, "http://api.soundcloud.com/users/31531137").
         with(query: hash_including({})).
-        to_return(status: 200, body: SAINTPEPSI_JSON)
+        to_return(status: 200, body: SAINTPEPSI_JSON, headers: {"Content-Type" => "application/json; charset=utf-8"})
     end
 
     it "creates a song and sound with correct metadata" do

@@ -8,6 +8,8 @@ Tunes::Application.routes.draw do
   resources :songs
   resources :sounds
   resources :keys
+  resources :groups
+  resources :memberships
 
   # if Rails.env.production?
   #   root 'webapp#index'

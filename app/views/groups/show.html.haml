@@ -1,0 +1,13 @@
+%h1
+  = "Group #{@group.id}: #{@group.name}"
+
+%div.membership-control
+  = render "join_form"
+
+%div
+  %b
+    members:
+  %ul
+  - @group.members.each do |member|
+    %li
+      = member.email

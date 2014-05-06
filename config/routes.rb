@@ -10,6 +10,7 @@ Tunes::Application.routes.draw do
   resources :keys
   resources :groups
   resources :memberships
+  resources :users
 
   # if Rails.env.production?
   #   root 'webapp#index'

@@ -10,4 +10,4 @@
   %ul
   - @group.members.each do |member|
     %li
-      = member.email
+      = link_to member.email, user_path(member)

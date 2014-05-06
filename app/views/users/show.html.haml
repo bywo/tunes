@@ -1,0 +1,12 @@
+%h1
+  = "User #{@user.id}"
+
+%section
+  %h2 User Info
+  %div
+    %b
+      Groups:
+    %ul
+    - @user.memberships.each do |membership|
+      %li
+        = link_to membership.group.name, group_path(membership.group)

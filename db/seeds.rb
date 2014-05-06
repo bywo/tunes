@@ -44,4 +44,4 @@ end
 puts 'creating groups .... '
 
 g = Group.where(name: 'FOUNDERS GROUP', description: 'this is the description').first_or_create
-g.add_member!(User.find_by_email(test_user['email']))
+g.add_owner!(User.find_by_email(test_user['email']))

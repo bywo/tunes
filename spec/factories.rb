@@ -26,13 +26,26 @@ FactoryGirl.define do
   end
 
   # todo
-  # group with memebers
+  # group with members
   # group with songs
   # group with feed
+
+  # has_many in Factory Girl
+  # http://robots.thoughtbot.com/aint-no-calla-back-girl
 
   factory :group do
     sequence(:name) { |n| "Group_#{n}" }
     description 'This is the description.'
+  end  
+
+  factory :membership do
+    user
+    group
+    owner false
+
+    factory :owner do
+      owner true
+    end
   end
 
   factory :text_post do

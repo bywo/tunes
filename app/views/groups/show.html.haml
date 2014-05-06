@@ -1,8 +1,18 @@
 %h1
   = "Group #{@group.id}: #{@group.name}"
 
-%div.membership-control
-  = render "join_form"
+- if @group.owner != current_user
+  %div.membership-control
+    = render "join_form"
+
+%div
+  %b
+    Owner:
+  = @group.owner.email
+
+- if @group.owner == current_user
+  %div
+    = render "delete_group"
 
 %div
   %b

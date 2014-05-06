@@ -9,8 +9,12 @@ describe Group do
   it { should respond_to(:description) }
   it { should respond_to(:memberships) }
   #it { should respond_to(:playlist) }
+  it { should respond_to(:owner) }
 
   it { should be_valid }
+
+  # its(:owner) { should_not be_nil }
+
 
   describe 'managing members' do
     let(:new_member_user){ FactoryGirl.create(:user) }

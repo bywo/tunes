@@ -2,7 +2,11 @@ module SongsHelper
 
   def song_from_soundcloud_url(url)
     client = SoundCloud.new(:client_id => ENV['SOUNDCLOUD_KEY'])
-    sound_info = resolve_soundcloud_sound(client, url)
+    begin
+      sound_info = resolve_soundcloud_sound(client, url)
+    rescue Exception => e
+      raise 'Error resolving SoundCloud URL: ' + e.message
+    end
 
     sound = Sound.find_by(sound_type: 'soundcloud', location: sound_info.id.to_s)
     if sound
@@ -11,18 +15,16 @@ module SongsHelper
 
     artist_info = client.get("/users/#{sound_info.user_id}")
 
-    song = Song.new({
+    song = Song.create({
       title: sound_info.title,
       artist: artist_info.username
     })
-    song.save
 
-    sound = Sound.new({
+    sound = Sound.create({
       sound_type: 'soundcloud',
       location: sound_info.id.to_s,
       song: song
     })
-    sound.save
 
     return song
   end

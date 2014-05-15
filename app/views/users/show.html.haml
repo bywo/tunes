@@ -15,7 +15,7 @@
 
 - if current_user == @user
   %section
-    = form_for(@group) do |f|
+    = form_for(@group_to_create) do |f|
       %div
         = f.label :name
         = f.text_field :name

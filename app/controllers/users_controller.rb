@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     # maybe should be on seperate page?
-    @group = Group.new
+    @group_to_create = Group.new
   end
 
   # TODO not sure how this is handled by devise

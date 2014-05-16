@@ -1,0 +1,26 @@
+%h1
+  = "User #{@user.id}"
+
+%section
+  %h2 User Info
+  %div
+    %b
+      Groups:
+    %ul
+    - @user.memberships.each do |membership|
+      %li
+        = link_to membership.group.name, group_path(membership.group)
+        - if membership.group.owner == current_user
+          (Owner)
+
+- if current_user == @user
+  %section
+    = form_for(@group_to_create) do |f|
+      %div
+        = f.label :name
+        = f.text_field :name
+      %div
+        = f.label :description
+        = f.text_area :description
+      %div
+        = f.submit 'Create Group'

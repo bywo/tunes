@@ -21,10 +21,10 @@ module Tunes
     # config.i18n.default_locale = :de
 
     # don't auto generate js/css files for controllers
-    config.generators do |g|
-      g.assets false
-    end
+    # config.generators do |g|
+    #   g.assets false
+    # end
 
-    config.assets.enabled = false
+    #config.assets.enabled = false
   end
 end

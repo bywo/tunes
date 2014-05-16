@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
   has_many :posts, inverse_of: :group
   has_many :text_posts, inverse_of: :group
@@ -8,9 +8,20 @@ class Group < ActiveRecord::Base
   validates_associated :memberships
   validates :name, presence: true
 
+  # TODO not sure how to enforce this
+  # validates :owner, presence: true
+
+  def owner
+    # group should always have owner
+    @owner ||= memberships.find_by(owner: true).user
+  end
 
   def add_member!(user)
     memberships.find_or_create_by!(user_id: user.id)
+  end
+
+  def add_owner!(user)
+    memberships.find_or_create_by!(user_id: user.id, owner: true)
   end
 
   def remove_member!(user)

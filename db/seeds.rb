@@ -6,6 +6,25 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+
+
+# helpers
+def add_user_to_seed(user)
+  if User.find_by_email(user['email']).present?
+    puts "user already found, skipping #{user['email']}..."
+  else
+    puts 'creating test user ...'
+    User.create(email: user['email'],
+                 password: user['password'],
+                 password_confirmation: user['password'])
+  end
+end
+
+
+
+
+
 puts 'creating songs and sounds ...'
 
 s = Song.where(:title => "It Won't Stop", :artist => "Sevyn Streeter").first_or_create
@@ -30,18 +49,18 @@ puts 'creating users ....'
 
 # you have to set this file up since its not checked in
 test_user = YAML.load_file('config/secret/test_user_cred.yml')['test_user']
-if User.find_by_email(test_user['email']).present?
-  puts 'test user already found, skipping...'
-else
-  puts 'creating test user ...'
-  User.create(email: test_user['email'],
-               password: test_user['password'],
-               password_confirmation: test_user['password'])
-end
+test_user_member_only = YAML.load_file('config/secret/test_user_cred.yml')['test_user_member_only']
 
+add_user_to_seed(test_user)
+add_user_to_seed(test_user_member_only)
 
 
 puts 'creating groups .... '
 
 g = Group.where(name: 'FOUNDERS GROUP', description: 'this is the description').first_or_create
 g.add_owner!(User.find_by_email(test_user['email']))
+
+
+
+
+

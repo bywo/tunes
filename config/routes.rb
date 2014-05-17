@@ -1,6 +1,7 @@
 Tunes::Application.routes.draw do
 
   devise_for :users
+
   # TEMP
   root 'static_pages#home'
   # PEMT

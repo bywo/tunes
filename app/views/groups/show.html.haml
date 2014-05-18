@@ -14,10 +14,5 @@
   %div
     = render "delete_group"
 
-%div
-  %b
-    members:
-  %ul
-  - @group.members.each do |member|
-    %li
-      = link_to member.email, user_path(member)
+#members
+  = render "members"

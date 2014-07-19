@@ -41,6 +41,7 @@ gem 'jbuilder', '1.0.2'
 
 gem 'webmock'
 gem 'soundcloud'
+gem 'youtube_it'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

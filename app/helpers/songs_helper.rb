@@ -1,3 +1,6 @@
+require 'soundcloud'
+require 'youtube_it'
+
 module SongsHelper
 
   def song_from_soundcloud_url(url)
@@ -38,4 +41,30 @@ module SongsHelper
     return sound_info
   end
 
+  def song_from_youtube_url(url)
+    client = YouTubeIt::Client.new(:dev_key => ENV['YOUTUBE_KEY'])
+    begin
+      video_info = client.video_by(url)
+    rescue Exception => e
+      raise 'Error resolving YouTube URL: ' + e.message
+    end
+
+    sound = Sound.find_by(sound_type: 'youtube', location: video_info.unique_id)
+    if sound
+      return sound.song
+    end
+
+    song = Song.create({
+      title: video_info.title,
+      artist: video_info.author.name
+    })
+
+    sound = Sound.create({
+      sound_type: 'youtube',
+      location: video_info.unique_id,
+      song: song
+    })
+
+    return song
+  end
 end

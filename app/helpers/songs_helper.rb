@@ -1,4 +1,3 @@
-require 'soundcloud'
 require 'youtube_it'
 
 module SongsHelper
@@ -12,9 +11,8 @@ module SongsHelper
     end
 
     sound = Sound.find_by(sound_type: 'soundcloud', location: sound_info.id.to_s)
-    if sound
-      return sound.song
-    end
+
+    return sound.song if sound
 
     artist_info = client.get("/users/#{sound_info.user_id}")
 
@@ -45,14 +43,20 @@ module SongsHelper
     client = YouTubeIt::Client.new(:dev_key => ENV['YOUTUBE_KEY'])
     begin
       video_info = client.video_by(url)
-    rescue Exception => e
-      raise 'Error resolving YouTube URL: ' + e.message
+    rescue OpenURI::HTTPError => e
+      if e.message == '404'
+        raise 'Bad Youtube URL'
+      elsif e.message == '403'
+        raise 'Bad API Key'
+      else
+        # unexpected error
+        raise e
+      end
     end
 
     sound = Sound.find_by(sound_type: 'youtube', location: video_info.unique_id)
-    if sound
-      return sound.song
-    end
+
+    return sound.song if sound
 
     song = Song.create({
       title: video_info.title,
